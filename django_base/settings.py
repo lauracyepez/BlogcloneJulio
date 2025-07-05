@@ -128,3 +128,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Login URL
 LOGIN_REDIRECT_URL = 'post-list'
 
+# Login URL
+LOGOUT_REDIRECT_URL = 'post-list'
+

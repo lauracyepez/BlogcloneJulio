@@ -14,8 +14,15 @@
         <a href="{% url 'post-list' %}"><h1>Blog de Miguel</h1></a>
 
         <!-- mostrar el nombre del usuario autenticado -->
+        <!-- cerrar sesion -->
+        
         {% if user.is_authenticated %}
             <p>Bienvenido, {{ user.username }}!</p>
+            <!--cerrar sesion -->
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesión</button>
+            </form>
         {% else %}
             <p>Bienvenido, visitante!</p>
             <!-- enlace para incio de sesion -->
