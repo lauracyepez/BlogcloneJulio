@@ -27,6 +27,8 @@
             <p>Bienvenido, visitante!</p>
             <!-- enlace para incio de sesion -->
             <a href="{% url 'login' %}">Iniciar sesión</a>
+            <!-- enlace para registrarse -->
+            <a href="{% url 'signup' %}">Registrarse</a>
         {% endif %}
         <!-- enlace para crear nuevo post -->
         <a href="{% url 'post-create' %}">Crear nuevo post</a>
