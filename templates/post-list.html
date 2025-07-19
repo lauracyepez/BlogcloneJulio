@@ -1,20 +1,77 @@
 {% extends "_base.html" %}
 
 {% block content %}
+<style>
+    .blog-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-radius: 10px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .blog-container h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+    .blog-posts ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .blog-posts li {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s ease;
+    }
+
+    .blog-posts li:hover {
+        background-color: #f9f9f9;
+    }
+
+    .blog-posts a {
+        font-weight: bold;
+        color: #0077cc;
+        text-decoration: none;
+    }
+
+    .blog-posts a:hover {
+        text-decoration: underline;
+    }
+
+    .blog-meta {
+        color: #777;
+        font-size: 0.9em;
+    }
+
+    .post-count {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #555;
+        font-weight: 500;
+    }
+</style>
+
+<div class="blog-container">
     <h2>Blog Posts</h2>
-    <ul>
-        {% for post in post_list %}
-            <li><a href="{% url "post-detail" post.pk %}">{{ post.title }}</a> por
-                {{ post.author }} -
-                {{ post.created_at }}
-            </li>
-        {% endfor %} 
-    </ul>
-
-    <!--que muestre cuantos post hay-->
-    <p>total posts: {{ post_count }}</p>
-
-
-    
+    <div class="blog-posts">
+        <ul>
+            {% for post in post_list %}
+                <li>
+                    <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+                    <div class="blog-meta">por {{ post.author }} — {{ post.created_at|date:"d/m/Y" }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <p class="post-count">Total posts: {{ post_count }}</p>
+</div>
 {% endblock content %}
-
